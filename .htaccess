@@ -4,6 +4,12 @@ Options +FollowSymlinks
 	Order Allow,Deny
 	Deny from all
 </Files>
+<Files constant.php>
+	Order Allow,Deny
+	Deny from all
+</Files>
 RewriteEngine on
 RewriteRule ^involve$ index.php
-RewriteRule ^chatapp/public/(img|css|js)/(.*)?$ realtime-chat/public/$1/$2
+RewriteRule ^res/(img|css|js)/(.*)?$ public/$1/$2
+RewriteRule ^chat-room$ index.php?m=common&a=body
+RewriteRule ^send-message$ index.php?m=message&a=main

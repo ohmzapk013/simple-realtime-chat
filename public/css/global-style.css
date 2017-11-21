@@ -3,6 +3,54 @@ body{
     background-repeat: repeat;
 }
 
+.register-box{
+    border-radius: 7px;
+    box-shadow: 0 0 20px gray;
+    padding: 30px 10px;
+    width: 400px;
+    /*height: 300px;*/
+    border: 1px solid lightgray;
+    background-color: rgba(255, 255, 255, 0.6);
+    margin: 150px auto;
+    text-align: center;
+}
+
+.register-box input{
+    padding-left: 10px;
+    border: none;
+    box-shadow: 0 0 5px gray;
+    line-height: 25px;
+    border-radius: 3px;
+    width: 200px;
+    transition: box-shadow 0.5s;
+    outline: none;
+}
+.register-box input:focus{
+    box-shadow: 0 0 5px dodgerblue;
+}
+
+.register-box .error{
+    font-family: "Segoe UI", "Tahoma", sans-serif;
+    font-size: 13px;
+    /*display: none;*/
+    color: red;
+    margin-top: 5px;
+}
+
+.register-box button{
+    background-color: dodgerblue;
+    border-radius: 7px;
+    padding: 7px 15px;
+    /*border: 1px solid #0068ae;*/
+    border: none;
+    box-shadow: 0 0 5px #0068ae;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    outline: none;
+    margin-left: 10px; 
+}
+
 #msg-content-box {
 
     overflow-y: auto;

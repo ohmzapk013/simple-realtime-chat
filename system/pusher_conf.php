@@ -1,4 +1,7 @@
-<?php 
+<?php
+
+if (!defined("SYSTEM_PATH"))
+	die("Bad request");
 
 return [
 	"app_id" => "400775",
