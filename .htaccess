@@ -1,0 +1,9 @@
+Options +FollowSymlinks
+#Options All -Indexes
+<Files .htaccess>
+	Order Allow,Deny
+	Deny from all
+</Files>
+RewriteEngine on
+RewriteRule ^involve$ index.php
+RewriteRule ^chatapp/public/(img|css|js)/(.*)?$ realtime-chat/public/$1/$2

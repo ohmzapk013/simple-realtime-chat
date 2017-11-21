@@ -1,0 +1,165 @@
+body{
+    background-image: url('../img/background.jpg');
+    background-repeat: repeat;
+}
+
+#msg-content-box {
+
+    overflow-y: auto;
+    height: 490px;
+}
+
+.msg-content {
+    position: relative;
+    margin: 10px;
+}
+
+.clear {
+    clear: both;
+}
+
+.me {
+    float: right;
+}
+
+.me .msg-text {
+    color: white;
+    background-color: dodgerblue;
+}
+
+.stranger .msg-text {
+    color: #282828;
+    background-color: #f0f0f0;
+}
+
+.msg-text {
+    max-width: 400px;
+    position: relative;
+    border: 0px solid transparent;
+    display: inline-block;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px lightgray;
+}
+
+.me .msg-text:before {
+    box-sizing: border-box;
+    position: absolute;
+    top: 10px;
+    right: -19px;
+    width: 0;
+    content: "";
+    border-left: 10px solid dodgerblue;
+    border-right: 10px solid transparent;
+    border-top: 5px solid transparent;
+    border-bottom: 10px solid transparent;
+}
+
+
+
+.stranger .msg-text:before {
+    box-sizing: border-box;
+    position: absolute;
+    top: 10px;
+    left: -20px;
+    width: 0;
+    content: "";
+    border-left: 10px solid transparent;
+    border-right: 10px solid #f0f0f0;
+    border-top: 5px solid transparent;
+    border-bottom: 10px solid transparent;
+}
+
+.avt {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-size: 40px;
+    vertical-align: bottom;
+    box-shadow: 0 0 5px gray;
+}
+
+.me .avt {
+    background-image: url('../img/avt2.jpg');
+    background-position: center;
+    float: right;
+    margin-left: 20px;
+}
+
+.stranger .avt {
+    background-image: url('../img/avt1.jpg');
+    background-position: center;
+    float: left;
+    margin-right: 20px;
+}
+
+#type-msg-wrapper {
+    position: absolute;
+    width: 100%;
+    height: 40px;
+    bottom: 0;
+    left: 0;
+}
+
+#msg-input-box {
+    display: inline-block;
+    width: 80%;
+}
+
+#msg-box {
+    margin-left: 10px;
+    padding-left: 5px;
+    width: 100%;   
+    line-height: 30px ;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    outline: none;
+    transition: all 0.5s;
+    box-shadow: 0 0 10px lightgray;
+}
+
+#msg-box:focus{
+    box-shadow: 0 0 5px dodgerblue;
+}
+
+.msg-button {
+    display: inline-block;
+    /*float: right;*/
+    padding: 2px;
+    margin-left: 20px;
+}
+
+.wrapper {
+    background-color: rgba(255, 255, 255, 0.5);
+    font-family: "Segoe UI", "Tahoma", sans-serif;
+    font-size: 14px;
+    width: 70%;
+    height: 550px;
+    border: 0px solid gray;
+    min-width: 500px;
+    position: relative;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px gray;
+}
+
+.msg-content .name {
+    font-size: 11px;
+    
+    margin-bottom: 3px;
+}
+
+#btn-send{
+    background-color: dodgerblue;
+    border-radius: 7px;
+    padding: 7px;
+    /*border: 1px solid #0068ae;*/
+    border: none;
+    box-shadow: 0 0 10px #0068ae;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    outline: none;
+
+}
+
