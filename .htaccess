@@ -11,5 +11,6 @@ Options +FollowSymlinks
 RewriteEngine on
 RewriteRule ^involve$ index.php
 RewriteRule ^res/(img|css|js)/(.*)?$ public/$1/$2
-RewriteRule ^chat-room$ index.php?m=common&a=body
-RewriteRule ^send-message$ index.php?m=message&a=main
+RewriteRule ^res/(.*)?$ public/$1
+RewriteRule ^chat-(room|leave|notify)$ index.php?m=common&a=$1
+RewriteRule ^message-(\w+)$ index.php?m=message&a=message_$1

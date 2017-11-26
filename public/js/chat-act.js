@@ -13,66 +13,120 @@ $(() => {
 /**
  *  Validate and return valid input text
  */
-function getInputText(){
+function getInputText() {
     let msgBox = $('#msg-box');
     let txt = $(msgBox).val().trim();
     $(msgBox).val("");
     if (txt === "")
         return "";
-    if (/(script|alert|prompt|eval|confirm)/.test(txt))
-        return "";
+    txt = txt.replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/\"/, "&quote;")
+        .replace(/(script|alert|prompt|eval|confirm)/igm, "");
     return txt;
 }
 
-function wrapSendingData(msg, time){
-    let name = typeof NAME === "undefined" ? "Unknown": NAME;
+function wrapSendingData(msg, time) {
+    let name = typeof NAME === "undefined" ? "Unknown" : NAME;
     return {
         sender: name,
+        avt: AVT,
         message: msg,
         sendTime: time
     };
 }
 
-function getTime(){
+function getTime() {
     let date = new Date();
-    return date.toLocaleString('en-US', { hour: 'numeric',minute:'numeric', hour12: true });
+    return date.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
 }
 
-function sendMessage(){
+function sendMessage() {
     $('#msg-box').focus();
     let txt = getInputText();
     if (txt === "")
         return;
     let data = wrapSendingData(txt, getTime());
-    // updateMessageBox(data, true);
+    updateMessageBox(data, true);
     sendMessageToServer(data);
 }
 
-function updateMessageBox(data){
-    let msgContentBox = $('#msg-content-box');
-    let isMine = data.sender === NAME;
-    if (isMine){
-        let htmlMe = `<div class="clear"></div><div class="msg-content me">
-            <div class="avt"></div><div class="msg-text">${data.message}</div></div>`;
-        $(msgContentBox).append(htmlMe);
-    } else {
-        let htmlSt = `<div class="clear"></div><div class="msg-content stranger">
-            <div class="name"><strong>${data.sender}</strong><span class="time">, ${data.sendTime}</span>
-            </div><div class="avt"></div>
-            <div class="msg-text">${data.message}</div></div>`;
-        $(msgContentBox).append(htmlSt);
+function updateMessageBox(data) {
+    if (data.hasOwnProperty("img"))
+        updateImageMessage(data.sender, data.sendTime, data.avt, data.img);
+    else {
+        updateTextMessage(data.sender, data.sendTime, data.avt, data.message, data.hasOwnProperty("file"));
     }
-    $(msgContentBox).scrollTop($(msgContentBox)[0].scrollHeight);
+    $('#loading').hide();
+    let box = $('#msg-content-box');
+    $(box).scrollTop($(box)[0].scrollHeight);
 }
 
-function sendMessageToServer(sendingData){
+function updateTextMessage(sender, time, avt, contentText, isFile) {
+    if (isFile)
+        contentText = `<a target="_blank" href="upload/${contentText}">${contentText}</a>`;
+    contentText = convertSignToEmoji(contentText);
+    let isMine = sender === NAME;
+    let html;
+    if (isMine) {
+        html = `
+        <div class="clear"></div>
+        <div class="msg-content me">
+            <div class="avt avt-${avt}"></div>
+            <div class="msg-text">${contentText}</div>
+        </div>`;
+    } else {
+        html = `
+        <div class="clear"></div>
+        <div class="msg-content stranger">
+            <div class="name">
+                <strong>${sender}</strong>
+                <span class="time">, ${time}</span>
+            </div>
+            <div class="avt avt-${avt}"></div>
+            <div class="msg-text">${contentText}</div>
+        </div>`;
+    }
+    $('#msg-content-box').append(html);
+}
+
+function updateImageMessage(sender, time, avt, imgURL) {
+    let isMine = sender === NAME;
+    let html;
+    if (isMine) {
+        html = `
+        <div class="clear"></div>
+        <div class="msg-content me">
+            <div class="avt avt-${avt}"></div>
+            <div class="msg-img">
+                <img class="img-attachment" src="upload/img/${imgURL}" height="200">
+            </div>
+        </div>`;
+    } else {
+        html = `
+        <div class="clear"></div>
+        <div class="msg-content stranger">
+            <div class="name">
+                <strong>${sender}</strong>
+                <span class="time">, ${time}</span>
+            </div>
+            <div class="avt avt-${avt}"></div>
+            <div class="msg-img">
+                <img class="img-attachment" src="upload/img/${imgURL}" height="200">
+            </div>
+        </div>`;
+    }
+    $('#msg-content-box').append(html);
+}
+
+function sendMessageToServer(sendingData) {
     // console.log(JSON.stringify(sendingData));
     $.post(
-        "send-message", 
-        {content: JSON.stringify(sendingData)},
-        (respondData, status) => {
-            console.log(respondData);
-            if (!(status === "success" && respondData.hasOwnProperty("success"))){
+        "message-text", { content: JSON.stringify(sendingData) },
+        (response, status) => {
+            // console.log(response);
+            // console.log(status);
+            if (!(status === "success" && response.hasOwnProperty("success"))) {
                 alert("Unable to send message :((");
             }
         },

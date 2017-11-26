@@ -19,7 +19,7 @@ class MessageWithPusher {
 		$this->event = $event;
 	}
 
-	public function sendMessageToClient($content = []){
+	public function triggerMessagePusher($content = []){
 		return $this->pusher->trigger($this->channel, $this->event, $content);
 	}
 

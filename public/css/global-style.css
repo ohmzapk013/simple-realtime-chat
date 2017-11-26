@@ -1,4 +1,5 @@
 body{
+    font-family: "Segoe UI", "Tahoma", sans-serif;
     background-image: url('../img/background.jpg');
     background-repeat: repeat;
 }
@@ -30,7 +31,6 @@ body{
 }
 
 .register-box .error{
-    font-family: "Segoe UI", "Tahoma", sans-serif;
     font-size: 13px;
     /*display: none;*/
     color: red;
@@ -52,7 +52,7 @@ body{
 }
 
 #msg-content-box {
-
+    position: relative;
     overflow-y: auto;
     height: 490px;
 }
@@ -73,6 +73,16 @@ body{
 .me .msg-text {
     color: white;
     background-color: dodgerblue;
+}
+
+.me .msg-text a{
+    color: white !important;
+}
+
+.msg-img{
+    display: inline-block;
+    box-shadow: 0 0 5px 2px gray;
+    border-radius: 5px;
 }
 
 .stranger .msg-text {
@@ -124,21 +134,44 @@ body{
     border-radius: 50%;
     background-size: 40px;
     vertical-align: bottom;
-    box-shadow: 0 0 5px gray;
+    /*box-shadow: 0 0 5px gray;*/
 }
 
 .me .avt {
-    background-image: url('../img/avt2.jpg');
     background-position: center;
     float: right;
     margin-left: 20px;
 }
 
 .stranger .avt {
-    background-image: url('../img/avt1.jpg');
     background-position: center;
     float: left;
     margin-right: 20px;
+}
+
+.avt-1{
+    background-image: url('../img/avt (1).png');    
+}
+.avt-2{
+    background-image: url('../img/avt (2).png');    
+}
+.avt-3{
+    background-image: url('../img/avt (3).png');    
+}
+.avt-4{
+    background-image: url('../img/avt (4).png');    
+}
+.avt-5{
+    background-image: url('../img/avt (5).png');    
+}
+.avt-6{
+    background-image: url('../img/avt (6).png');    
+}
+.avt-7{
+    background-image: url('../img/avt (7).png');    
+}
+.avt-8{
+    background-image: url('../img/avt (8).png');    
 }
 
 #type-msg-wrapper {
@@ -151,7 +184,7 @@ body{
 
 #msg-input-box {
     display: inline-block;
-    width: 80%;
+    width: 70%;
 }
 
 #msg-box {
@@ -177,6 +210,57 @@ body{
     margin-left: 20px;
 }
 
+
+#btn-send{
+    background-color: dodgerblue;
+    border-radius: 7px;
+    /*padding: 7px;*/
+    width: 60px;
+    height: 32px;
+    /*border: 1px solid #0068ae;*/
+    border: none;
+    box-shadow: 0 0 10px #0068ae;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    outline: none;
+
+}
+
+.btn-media{
+    background-color: transparent;
+    border-radius: 7px;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    border: none;
+    /*box-shadow: 0 0 10px #0068ae;*/
+    /*border: 1px solid blue;*/
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    outline: none;
+    filter: grayscale(100%);
+    background-size: auto 32px;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0;
+}
+
+.btn-picture{
+    background-image: url('../img/control/picture.png');
+}
+
+.btn-file{
+    background-image: url('../img/control/attach.png');
+    background-size: auto 28px;
+}
+
+.btn-emoji{
+    background-image: url('../img/control/babyDragon.png');
+    background-size: auto 24px;
+}
+
 .wrapper {
     background-color: rgba(255, 255, 255, 0.5);
     font-family: "Segoe UI", "Tahoma", sans-serif;
@@ -184,7 +268,7 @@ body{
     width: 70%;
     height: 550px;
     border: 0px solid gray;
-    min-width: 500px;
+    min-width: 700px;
     position: relative;
     margin: 20px auto;
     border-radius: 10px;
@@ -197,17 +281,122 @@ body{
     margin-bottom: 3px;
 }
 
-#btn-send{
-    background-color: dodgerblue;
-    border-radius: 7px;
-    padding: 7px;
-    /*border: 1px solid #0068ae;*/
-    border: none;
-    box-shadow: 0 0 10px #0068ae;
-    cursor: pointer;
-    color: white;
-    font-weight: bold;
-    outline: none;
-
+.avt-list{
+    margin: 0;
+    padding: 0;
 }
 
+.avt-item{
+    list-style: none;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    /*border: 1px solid gray;*/
+    transition: box-shadow 0.25s;
+    border-radius: 50%;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.avt-item:hover{
+    box-shadow: 0 0 2px 3px dodgerblue;
+}
+
+.active{
+    box-shadow: 0 0 2px 3px dodgerblue;
+}
+
+hr {
+    border: 1px solid lightgray;
+    opacity: 0.8;
+    width: 50%;
+    outline: none;
+}
+
+.avt-item img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.btn-act{
+    display: inline-block;
+    border: 1px solid black;
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+}
+
+#loading{
+    text-align: center;
+    width: 100%;
+    position: fixed;
+    bottom: 15%;
+    display: none;
+}
+
+.modal{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: none;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal img{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.modal .close{
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: white; 
+    font-size: 50px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#upload-progress-bar{
+    width: 400px;
+    height: 10px;
+    border: 1px solid gray;
+    padding: 1px;
+}
+
+#upload-progress-bar-fill{
+    width: 0;
+    height: 10px;
+    background-color: green;
+}
+
+.navigation {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: -1;
+}
+
+.navigation div{
+    width: 32px;
+    height: 32px;
+    background-size: 100%;
+    display: inline-block;
+    margin: 5px;
+    /*box-shadow: 5px 5px 5px gray;*/
+}
+
+div.leave{
+    background-image: url('../img/control/leave.png');
+}
+div.notify{
+    background-image: url('../img/control/bell.png');
+}

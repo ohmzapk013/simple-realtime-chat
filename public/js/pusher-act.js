@@ -4,7 +4,12 @@ function registerPusher(){
     });
     let channel = pusher.subscribe("public-room");
     channel.bind('new-message', (data) => {
+        if (!data.hasOwnProperty('file') && !data.hasOwnProperty('img'))
+            if (data.sender === NAME)
+                return;
         updateMessageBox(data);
+        playSound();
+        notifyWhenNotFocus();
     });
 }
 
