@@ -76,5 +76,5 @@ function invokeNotification(){
 
 function changeTabStatus(){
     document.title = document.hidden ? 
-            "Chat with stranger": "(*) New message";
+            "(*) New message": "Chat with stranger";
 }
