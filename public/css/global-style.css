@@ -386,17 +386,25 @@ hr {
 }
 
 .navigation div{
-    width: 32px;
-    height: 32px;
-    background-size: 100%;
-    display: inline-block;
-    margin: 5px;
+    /*width: 32px;*/
+    /*height: 32px;*/
+    /*background-size: 100%;*/
+    /*display: inline-block;*/
+    /*margin: 5px;*/
     /*box-shadow: 5px 5px 5px gray;*/
 }
 
-div.leave{
+.navigation a{
+    padding: 10px;
+    display: inline-block;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    text-decoration: none;
+}
+
+a.leave{
     background-image: url('../img/control/leave.png');
 }
-div.notify{
+a.notify{
     background-image: url('../img/control/bell.png');
 }

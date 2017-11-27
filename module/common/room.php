@@ -62,8 +62,8 @@ else redirect("involve");
 	</div>
 
 	<div class="navigation">
-		<a id="chat-notify" href="chat-notify" title="Thông báo tin nhắn mới"><div class="notify"></div></a>
-		<a href="chat-leave" title="Thoát"><div class="leave"></div></a>
+		<a id="chat-notify" class="notify" href="chat-notify" title="Thông báo tin nhắn mới">&nbsp;</a>
+		<a href="chat-leave" class="leave" title="Thoát">&nbsp;</a>
 	</div>
 
 
